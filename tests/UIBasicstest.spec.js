@@ -1,6 +1,6 @@
 const {test} = require('@playwright/test')
 
-test('Browser Context Playwright Test', async ({browser})=> {
+test.only('Browser Context Playwright Test', async ({browser})=> {
 // playwright code is Asynchronous
 // Step 1 -- Open Browser
 // Step 2 -- Enter User Name & Password
@@ -15,5 +15,5 @@ await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
 });
 
 test('Page Playwright Test', async ({page})=> {
-    page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+    page.goto("https://www.google.com/");
 });
