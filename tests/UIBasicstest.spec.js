@@ -14,6 +14,13 @@ test('Browser Context Playwright Test', async ({browser})=> {
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
     console.log(await page.title());
     await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy");
+
+    // css
+    await page.locator("#username").fill("rahulshetty");
+    await page.locator("[type='password']").fill("learning");
+    await page.locator("#signInBtn").click();
+
+
 });
 
 test('Page Playwright Test', async ({page})=> {
