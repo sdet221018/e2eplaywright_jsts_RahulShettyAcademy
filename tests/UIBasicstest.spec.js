@@ -1,6 +1,6 @@
 const {test, expect} = require('@playwright/test')
 
-test('Browser Context Playwright Test', async ({browser})=> {
+test.only('Browser Context Playwright Test', async ({browser})=> {
 // playwright code is Asynchronous
 // Step 1 -- Open Browser
 // Step 2 -- Enter User Name & Password
@@ -11,16 +11,34 @@ test('Browser Context Playwright Test', async ({browser})=> {
     const context = await browser.newContext();
 // To create a page of Browser and Open a New page
     const page = await context.newPage();
+
+    const userName = page.locator("#username");
+    const password = page.locator("#password");
+    const signIn = page.locator("#signInBtn");
+
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
     console.log(await page.title());
     await expect(page).toHaveTitle("LoginPage Practise | Rahul Shetty Academy");
 
     // css
-    await page.locator("#username").fill("rahulshetty");
-    await page.locator("[type='password']").fill("learning");
-    await page.locator("#signInBtn").click();
+    await userName.fill("rahulshetty");
+    await password.fill("learning");
+    await signIn.click();
+
     console.log(await page.locator("[style*='block']").textContent());
     await expect(page.locator("[style*='block']")).toContainText('Incorrect');
+
+    await userName.fill("rahulshettyacademy");
+    await password.fill("learning");
+    await signIn.click();
+
+    // To Return first WebElement (n=0) when there are multiple web elements located.
+    console.log(await page.locator(".card-body a").first().textContent());
+    // To Return nth WebElement (n=1) when there are multiple web elements located.
+    console.log(await page.locator(".card-body a").nth(1).textContent());
+    // To Return last WebElement (n=3) when there are multiple web elements located.
+    console.log(await page.locator(".card-body a").last().textContent());
+
 });
 
 test('Page Playwright Test', async ({page})=> {
