@@ -15,6 +15,7 @@ test.only('Browser Context Playwright Test', async ({browser})=> {
     const userName = page.locator("#username");
     const password = page.locator("#password");
     const signIn = page.locator("#signInBtn");
+    const cardTitles = page.locator(".card-body a");
 
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
     console.log(await page.title());
@@ -33,11 +34,17 @@ test.only('Browser Context Playwright Test', async ({browser})=> {
     await signIn.click();
 
     // To Return first WebElement (n=0) when there are multiple web elements located.
-    console.log(await page.locator(".card-body a").first().textContent());
+    console.log(await cardTitles.first().textContent());
     // To Return nth WebElement (n=1) when there are multiple web elements located.
-    console.log(await page.locator(".card-body a").nth(1).textContent());
+    console.log(await cardTitles.nth(1).textContent());
     // To Return last WebElement (n=3) when there are multiple web elements located.
-    console.log(await page.locator(".card-body a").last().textContent());
+    console.log(await cardTitles.last().textContent());
+
+    const allTitles = await cardTitles.allTextContents();
+    console.log(allTitles);
+    // await expect(allTitles.first().toContainText("iphone X"));
+    // await expect(allTitles.last().toContainText('BlackBerry'));
+
 
 });
 
