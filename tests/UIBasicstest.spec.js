@@ -1,6 +1,6 @@
 const {test, expect} = require('@playwright/test')
 
-test.only('Browser Context Playwright Test', async ({browser})=> {
+test('Browser Context Playwright Test', async ({browser})=> {
 // playwright code is Asynchronous
 // Step 1 -- Open Browser
 // Step 2 -- Enter User Name & Password
@@ -40,12 +40,12 @@ test.only('Browser Context Playwright Test', async ({browser})=> {
     // To Return last WebElement (n=3) when there are multiple web elements located.
     console.log(await cardTitles.last().textContent());
 
+    // To Return all the WebElements on the page
     const allTitles = await cardTitles.allTextContents();
     console.log(allTitles);
+
     // await expect(allTitles.first().toContainText("iphone X"));
     // await expect(allTitles.last().toContainText('BlackBerry'));
-
-
 });
 
 test('Page Playwright Test', async ({page})=> {
