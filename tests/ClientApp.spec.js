@@ -6,6 +6,8 @@ test('Web Client App login Test', async ({page})=> {
     const password = page.locator("#userPassword");
     const signIn = page.locator("[value=Login]");
     const cardTitles = page.locator(".card");
+    // const productName = 'Zara coat 3';
+    const products = page.locator(".card-body");
 
     await page.goto("https://rahulshettyacademy.com/client");
     console.log(await page.title());
