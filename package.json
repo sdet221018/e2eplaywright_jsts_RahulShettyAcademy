@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {},
   "keywords": [],
-  "author": "",
+  "author": "KS",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.46.1",
